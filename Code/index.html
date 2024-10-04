@@ -4,8 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Library App</title>
-    <link rel="stylesheet" href="css/styles.css" />
-    <script src="js/script.js" defer></script>
+    <!-- Adjusted paths if CSS and JS are in the same directory -->
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
   </head>
   <body>
     <div class="container">
@@ -13,20 +14,13 @@
         <h1>Library App</h1>
       </header>
       <main>
-        <section class="books">
-          <article class="book">
-            <h2>Book Title</h2>
-            <p>Author: Author Name</p>
-            <p>Pages: 300</p>
-            <button class="delete">Delete</button>
-          </article>
-        </section>
+        <section class="books"></section>
         <button id="newBookBtn">NEW BOOK</button>
         <form id="newBookForm">
           <input type="text" id="title" placeholder="Title" required />
           <input type="text" id="author" placeholder="Author" required />
           <input type="number" id="pages" placeholder="Pages" required />
-          <label for="read">Read:</label>
+          <label for="isRead">Read:</label>
           <input type="checkbox" id="isRead" />
           <button type="submit">Add Book</button>
         </form>

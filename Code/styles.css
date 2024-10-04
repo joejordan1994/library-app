@@ -1,111 +1,56 @@
+/* styles.css */
+
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
-  background-color: aliceblue;
 }
 
 body {
   font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
   background-color: #f4f4f4;
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 100vh;
+  padding: 20px;
 }
 
 .container {
-  width: 80%;
-  margin: auto;
-  overflow: hidden;
-  max-width: 500px;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 600px;
 }
 
 header {
   background: #333;
   color: #fff;
-  padding-top: 30px;
-  min-height: 70px;
-  border-bottom: #77aaff 3px solid;
-}
-
-header h1 {
+  padding: 20px;
   text-align: center;
-  text-transform: uppercase;
-  margin: 0;
-}
-
-h1 {
-  text-align: center;
-  margin-bottom: 20px;
 }
 
 .books {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+  flex-direction: column;
+  margin-top: 20px;
 }
 
 .book {
   background: #fff;
-  margin: 10px;
-  padding: 20px;
+  padding: 15px;
+  margin-bottom: 15px;
   border: 1px solid #ddd;
   border-radius: 5px;
-  width: 30%;
 }
 
 .book h2 {
-  margin-top: 0;
+  margin-bottom: 10px;
 }
 
-input[type="text"],
-input[type="password"] {
-  width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+.book p {
+  margin-bottom: 5px;
 }
 
-button {
-  width: 100%;
-  padding: 10px;
-  border: none;
-  background-color: #333;
-  color: #fff;
-  border-radius: 5px;
-  cursor: pointer;
+.book button {
+  margin-top: 10px;
 }
 
-button:hover {
-  background-color: #444;
-}
-
-button:active {
-  background-color: #555;
-}
-
-button:focus {
-  outline: none;
-}
-
-button.delete {
-  background: #ff4444;
-  color: #fff;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-}
-
-button#newBookBtn {
-  display: block;
+#newBookBtn {
   width: 100%;
   padding: 10px;
   background: #77aaff;
@@ -115,29 +60,28 @@ button#newBookBtn {
   margin-top: 20px;
 }
 
-form#newBookForm {
-  display: none;
+#newBookForm {
+  display: none; /* Ensure the form is hidden by default */
   margin-top: 20px;
 }
 
-form#newBookForm input,
-form#newBookForm button {
-  display: block;
+#newBookForm input,
+#newBookForm button {
   width: 100%;
-  margin-bottom: 10px;
   padding: 10px;
+  margin-bottom: 10px;
 }
 
-.error {
-  color: red;
-  font-size: 14px;
-  margin: 10px 0;
-  text-align: center;
+button.delete {
+  background: #ff4444;
+  color: #fff;
+  border: none;
+  cursor: pointer;
 }
 
-.success {
-  color: green;
-  font-size: 14px;
-  margin: 10px 0;
-  text-align: center;
+button.toggleRead {
+  background: #77aaff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
 }
