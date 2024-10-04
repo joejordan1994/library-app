@@ -2,11 +2,14 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: aliceblue
+  background-color: aliceblue;
 }
 
 body {
-  font-family: 'Arial', sans-serif;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,7 +17,9 @@ body {
 }
 
 .container {
-  width: 100%;
+  width: 80%;
+  margin: auto;
+  overflow: hidden;
   max-width: 500px;
   padding: 20px;
   background-color: #fff;
@@ -22,9 +27,42 @@ body {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+header {
+  background: #333;
+  color: #fff;
+  padding-top: 30px;
+  min-height: 70px;
+  border-bottom: #77aaff 3px solid;
+}
+
+header h1 {
+  text-align: center;
+  text-transform: uppercase;
+  margin: 0;
+}
+
 h1 {
   text-align: center;
   margin-bottom: 20px;
+}
+
+.books {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.book {
+  background: #fff;
+  margin: 10px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  width: 30%;
+}
+
+.book h2 {
+  margin-top: 0;
 }
 
 input[type="text"],
@@ -56,6 +94,38 @@ button:active {
 
 button:focus {
   outline: none;
+}
+
+button.delete {
+  background: #ff4444;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+button#newBookBtn {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background: #77aaff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+form#newBookForm {
+  display: none;
+  margin-top: 20px;
+}
+
+form#newBookForm input,
+form#newBookForm button {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
 }
 
 .error {
