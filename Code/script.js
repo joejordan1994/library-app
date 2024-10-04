@@ -1,9 +1,5 @@
 const myLibrary = [];
 
-// Add initial books for testing
-// myLibrary.push(new Book("The Hobbit", "J.R.R. Tolkien", 295, true));
-// myLibrary.push(new Book("1984", "George Orwell", 328, false));
-
 function Book(title, author, pages, isRead) {
   this.title = title;
   this.author = author;

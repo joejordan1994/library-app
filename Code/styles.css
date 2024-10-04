@@ -59,7 +59,7 @@ header {
 }
 
 #newBookForm {
-  display: none; /* Ensure the form is hidden by default */
+  display: none;
   margin-top: 20px;
 }
 
