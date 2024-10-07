@@ -70,7 +70,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Use event delegation for the books container
   document.querySelector(".books").addEventListener("click", (e) => {
     const bookElement = e.target.closest(".book");
     const index = bookElement.getAttribute("data-index");
