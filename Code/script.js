@@ -1,47 +1,55 @@
-const myLibrary = [];
+class Book {
+  constructor(title, author, pages, isRead) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.isRead = isRead;
+  }
 
-function Book(title, author, pages, isRead) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.isRead = isRead;
+  toggleReadStatus() {
+    this.isRead = !this.isRead;
+  }
 }
 
-Book.prototype.toggleReadStatus = function () {
-  this.isRead = !this.isRead;
-};
+class Library {
+  constructor() {
+    this.books = [];
+  }
 
-function addBookToLibrary(book) {
-  myLibrary.push(book);
-  renderLibrary();
+  addBook(book) {
+    this.books.push(book);
+    this.render();
+  }
+
+  removeBook(index) {
+    this.books.splice(index, 1);
+    this.render();
+  }
+
+  render() {
+    const booksContainer = document.querySelector(".books");
+    booksContainer.innerHTML = "";
+
+    this.books.forEach((book, index) => {
+      const bookElement = document.createElement("article");
+      bookElement.classList.add("book");
+      bookElement.setAttribute("data-index", index);
+      bookElement.innerHTML = `
+        <h2>${book.title}</h2>
+        <p>Author: ${book.author}</p>
+        <p>Pages: ${book.pages}</p>
+        <p>Read: <button class="toggleRead">${
+          book.isRead ? "Yes" : "No"
+        }</button></p>
+        <button class="delete">Delete</button>
+      `;
+
+      booksContainer.appendChild(bookElement);
+    });
+  }
 }
 
-function removeBookFromLibrary(index) {
-  myLibrary.splice(index, 1);
-  renderLibrary();
-}
-
-function renderLibrary() {
-  const booksContainer = document.querySelector(".books");
-  booksContainer.innerHTML = "";
-
-  myLibrary.forEach((book, index) => {
-    const bookElement = document.createElement("article");
-    bookElement.classList.add("book");
-    bookElement.setAttribute("data-index", index);
-    bookElement.innerHTML = `
-      <h2>${book.title}</h2>
-      <p>Author: ${book.author}</p>
-      <p>Pages: ${book.pages}</p>
-      <p>Read: <button class="toggleRead">${
-        book.isRead ? "Yes" : "No"
-      }</button></p>
-      <button class="delete">Delete</button>
-    `;
-
-    booksContainer.appendChild(bookElement);
-  });
-}
+const myLibrary = new Library();
 
 document.addEventListener("DOMContentLoaded", () => {
   const newBookBtn = document.getElementById("newBookBtn");
@@ -64,7 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (title && author && pages) {
       const newBook = new Book(title, author, pages, isRead);
-      addBookToLibrary(newBook);
+      myLibrary.addBook(newBook);
       newBookForm.reset();
       newBookForm.style.display = "none";
     }
@@ -72,18 +80,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.querySelector(".books").addEventListener("click", (e) => {
     const bookElement = e.target.closest(".book");
-    const index = bookElement.getAttribute("data-index");
+    const index = parseInt(bookElement.getAttribute("data-index"), 10);
 
     if (e.target.classList.contains("delete")) {
-      removeBookFromLibrary(index);
+      myLibrary.removeBook(index);
     }
 
     if (e.target.classList.contains("toggleRead")) {
-      myLibrary[index].toggleReadStatus();
-      renderLibrary();
+      myLibrary.books[index].toggleReadStatus();
+      myLibrary.render();
     }
   });
 
   // Render the library on page load
-  renderLibrary();
+  myLibrary.render();
 });
